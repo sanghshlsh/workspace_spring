@@ -73,7 +73,7 @@ src\
 				= 클래스파일
 				\spring\ 
 = 두개의 환경설정존재\\(root-)의 자식이 appservlet폴더 내 servlet-con~ servlet-은 웹과 관련된 환경설정 파일\컨트롤러포함
-root-con~은 그외
+root-con~은 그외(service/)
 					\appservlet\servlet-context.xml
 					\root-context.xml
 
@@ -145,6 +145,32 @@ https://www.w3schools.com/의 lean bootstrap3에서 try it을 눌러 <meta~ 부�
 meta charset="euc-kr"에 붙여넣는다.
 그리고 이를 위 템플릿에 집어넣는다.
 ================================================================================================================
+maven dependencies-> spring-web-4.2.1-> web.filter 복사 그내부 charencoding복사
+org.springframework.web.filter	//패키지
+.CharacterEncodingFilter	//클래스
+합쳐서 넣는다
+
+결과
+<filter>
+	<filter-name>encoding</filter-name>
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	<init-param>
+		<pama-name>encoding</pama-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+	
+	<init-param>
+		<param-name>forceEncoding</param-name>
+		<param-value>true</param-value>
+	</init-param>
+</filter>
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+================================================================================================================
+
 
 컨트롤러
 @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -162,3 +188,11 @@ method의 이름과 같은 web-inf/views의 jsp파일을 실행시킨다.
 기존처럼
 httpservletrequest requset 파라미터를넣어 request.getparameter를통해 받아올 필요 없이
 spring에서는 String name파라미터만 넣어도 된다.
+
+
+
+@어노테이션이 붙어있다면 객체가 될 후보들인데
+servlet-context의 component-scan을 통해 객체가 된다.
+
+spring은 인터페이스기반
+디렉토리패턴기반

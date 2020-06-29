@@ -1,5 +1,6 @@
 package kr.co.ca;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -35,10 +36,23 @@ public class HomeController {
 	public String insert(Model model, String name){
 //		httpservletrequest requset 파라미터를넣어 request.getparameter를통해 받아올 필요 없이
 //		spring에서는 String name파라미터만 넣어도 된다.
+//		한글인코딩에 문제가 있어 임시방편으로 method를 만들어 인코딩해준다.
+		name = toKor(name);
+		
 		model.addAttribute("name",name);
 		return "insert";
 	}
 	
+	private String toKor(String name) {
+		
+		try {
+			return new String(name.getBytes("8859_1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public String list() {
 		return "list";
