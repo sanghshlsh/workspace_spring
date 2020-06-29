@@ -24,21 +24,18 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+				
+		model.addAttribute("serverTime", "hello" );
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public String insert(){
-		
+	public String insert(Model model, String name){
+//		httpservletrequest requset íŒŒë¼ë¯¸í„°ë¥¼ë„£ì–´ request.getparameterë¥¼í†µí•´ ë°›ì•„ì˜¬ í•„ìš” ì—†ì´
+//		springì—ì„œëŠ” String nameíŒŒë¼ë¯¸í„°ë§Œ ë„£ì–´ë„ ëœë‹¤.
+		model.addAttribute("name",name);
 		return "insert";
 	}
 	
@@ -46,12 +43,9 @@ public class HomeController {
 	public String list() {
 		return "list";
 	}
-	//¸®ÅÏÇü½Ä¿¡ void°¡ ÀÖÀ»¶© ¸Ş¼ÒµåÀÌ¸§°ú °°Àº viewsÀÇ jsp¸¦ ½ÇÇà½ÃÅ²´Ù´Â°Í
+	//ë¦¬í„´í˜•ì‹ì— voidê°€ ìˆì„ë• ë©”ì†Œë“œì´ë¦„ê³¼ ê°™ì€ viewsì˜ jspë¥¼ ì‹¤í–‰ì‹œí‚¨ë‹¤ëŠ”ê²ƒ
 	@RequestMapping(value = "/list2", method = RequestMethod.GET)
-	public void list2() {
+	public void list2() {}
 		
-	}
-	
-	
 	
 }
