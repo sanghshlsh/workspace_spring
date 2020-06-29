@@ -1,6 +1,7 @@
 package kr.co.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -11,4 +12,10 @@ public class MyController {
 	public String show() {
 		return "show";
 	}
+//	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+//	public String insert(Model model, String name){
+//
+//		model.addAttribute("name","a");
+//		return "insert";
+//	}
 }

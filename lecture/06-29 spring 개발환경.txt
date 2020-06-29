@@ -72,13 +72,15 @@ src\
 				\calsses\
 				= 클래스파일
 				\spring\ 
-= 두개의 환경설정존재\\(root-)의 자식이 appservlet폴더 내 servlet-con~ servlet-은 웹과 관련된 환경설정 파일\컨트롤러포함
+= 두개의 환경설정존재
+(root-)의 자식이 appservlet폴더 내 servlet-con~ 
+servlet-은 웹과 관련된 환경설정 파일\컨트롤러포함
 root-con~은 그외(service/repository(DAO)/DB/log 등)
 					\appservlet\servlet-context.xml
 					\root-context.xml
 
 				\views\	= jsp파일들
-				\web.xml= frontcontroller 내장-
+				\web.xml= frontcontroller 내장되어있는 web설정파일
 <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>	<- frontcontroller	
 design\source탭 두가지 존재
 
@@ -86,7 +88,7 @@ design\source탭 두가지 존재
 	
 
 
-	pom.xml			= jar파일 내려받을수 있게
+	pom.xml			= jar파일 내려받을수 있게(maven 설정파일)
 	
 우리가 컨트롤 해야 할것들
 src\main\java\-------------------------------------
