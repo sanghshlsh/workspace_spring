@@ -106,6 +106,11 @@ public String home(local locale,~) -->이method를 mvc 핸들러 라고 부른�
 :클라이언트의 요청을 처리해주는 메소드
 
 
+return "string";의 의미는
+web-inf/views/string.jsp
+return형식으로 string을 사용하지 않고 void를 사용한다면 
+method의 이름과 같은 web-inf/views의 jsp파일을 실행시킨다.
+
 ==============================================================================================
 pom.xml의 여러탭중 pom.xml탭 클릭후 	java버전 1.8로 수정(jdk1.8)
 					spring버전은 4.2.1로 수정(spring 4.2.1)

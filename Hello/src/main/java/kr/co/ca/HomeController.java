@@ -36,4 +36,22 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String insert(){
+		
+		return "insert";
+	}
+	
+	@RequestMapping(value="/list", method = RequestMethod.GET)
+	public String list() {
+		return "list";
+	}
+	//리턴형식에 void가 있을땐 메소드이름과 같은 views의 jsp를 실행시킨다는것
+	@RequestMapping(value = "/list2", method = RequestMethod.GET)
+	public void list2() {
+		
+	}
+	
+	
+	
 }
