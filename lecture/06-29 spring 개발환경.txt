@@ -73,7 +73,7 @@ src\
 				= 클래스파일
 				\spring\ 
 = 두개의 환경설정존재\\(root-)의 자식이 appservlet폴더 내 servlet-con~ servlet-은 웹과 관련된 환경설정 파일\컨트롤러포함
-root-con~은 그외(service/)
+root-con~은 그외(service/repository(DAO)/DB/log 등)
 					\appservlet\servlet-context.xml
 					\root-context.xml
 
