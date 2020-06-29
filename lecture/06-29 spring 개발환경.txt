@@ -1,0 +1,80 @@
+https://spring.io/tools
+
+Spring Tools 4 for Eclipse
+window 64-bit
+
+
+압축풀고 내부 content압축파일 압축풀어
+
+경로 c\workspace_spring으로 지정
+
+
+
+STS의 HELP메뉴에서 MARKET PLACE 선택 후
+검색창에 spring 입력 후 검색
+spring tools 3 add-on install
+
+
+
+maven 빌드 프로그램을 이용해 jar 파일 관리
+C:\Users\admin\.m2
+.m2없을 시 파일 옵션 보기탭 
+보호된 운영체제 파일 숨기기(권장)체크해제
+숨김파일,폴더 및 드라이브 표시 체크
+(legacy프로젝트 생성시 생성된 폴더)
+
+\repository\
+org\springframework\ 스프링jar 폴더
+나중에 jar오류시 .m2전체를 날려 다시 생성하거나 .m2내 잘못된 jar파일 삭제후 다시 생성
+
+spring legacy project 생성
+-> spring mvc project(인터넷이 연결되어야만 생성가능)선택
+생성 
+please~
+->패키지 생성(주의사항)키워드가 최소 3개
+ex)com.naver -> 키워드 2개 불가
+
+server 는 show view other를 통해 server를 들어가
+tomcat7.0으로 연결
+
+servers의 tomcat 7.0을 더블클릭하여
+
+overview/modules중
+orverview의
+port를
+tomcat admin은 8005
+http/1.1은 8089로 설정
+
+브라우져 바꾸는 방법은
+window-preferences-general-web browser탭의 use external web browser를 통해 설정한다.
+
+구조
+위에서 생성한 hello프로젝트 기준으로
+src\main\java\			= 자바 코드입력
+src\main\resources\		= 환경설정 컨트롤
+src\test\java\ 			= 테스트용 코드입력->테스트 주도 개발(TDD)에서 사용
+src\test\resources\		= 테스트용 환경설정
+jre
+maven dependencies		= 수많은 jar파일 존재	
+src\				=
+	\main\webapp\		= 기존 webcontent
+		\resources\=
+		\web-inf\	= 기존 web-inf
+			\calsses\= 클래스파일
+			\spring\ = 두개의 환경설정존재\\(root-)의 자식이 appservlet폴더 내 servlet-con~ servlet-은 웹과 관련된 환경설정 파일\컨트롤러포함
+root-con~은 그외
+				\appservlet\
+				\root-context.xml
+			\views\	= jsp파일들
+			\web.xml= frontcontroller 내장-
+<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>	design\source탭 두가지 존재
+
+				= 
+	
+
+
+pom.xml			= jar파일 내려받을수 있게
+여러탭중 pom.xml탭 클릭후 java버전 1.8로 수정(jdk1.8)
+			spring버전은 4.2.1로 수정(spring 4.2.1)
+->동시에 자동적으로 jar파일 다운로드//위 버전은 무엇으로 학습했는지 알고 있어야 한다.
+단위테스트에서 사용할 junit은 4.7이아닌 4.12로 변경
