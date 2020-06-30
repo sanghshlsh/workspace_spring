@@ -141,3 +141,53 @@ Mybatis연결 잘되었는지 테스트
 단 connnection대신 session
 datafactory대신 SqlSessionFactory sqlFactory
 session 연결은 sqlFactory의 openSession method
+
+======================================================================================================
+
+src/main/resources 에 mappers 폴더 만들고 mapper파일들을 모아준다.
+우선 xml file생성
+memberMapper.xml//xxxMapper.xml로 생성해야한다.
+mapper.xml파일들의 이름은 다 xxMapper.xml로 생성(*Mapper.xml을통해 mapper로 구분/아래 root-context 매퍼location설정)
+
+
+mybatis-config.xml검색하여
+https://mybatis.org/mybatis-3/ko/getting-started.html접속
+매핑된 sql구문살펴보기의 코드 복사하여 memberMapper.xml에 붙여넣기
+
+
+namespace는 id가 같을 경우 구분해준다.
+이는 호출할떄 namespace.id 로 호출
+resulttype에 해당하는 클래스가 미리 지정한 이곳(mybatis-config.xml에서 설정)에서는 domain에 존재해야 한다.
+
+매퍼파일에서 sql문,namespace,id,resultType을 수정하고 저장
+select * from member같은 sql문을 실행하더라도 list타입으로 받지 않고 generic타입으로 받는다.
+
+root-context에 매퍼폴더 위치 설정
+<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+mappers폴더안의 어떤폴더인지 상관없이 xxxMapper.xml이면 mapper로 인식하도록 해주는 설정
+======================================================================================================
+
+
+bean생성
+id = sqlSession 
+class는 mybatis-spring의 mybatis.spring.sqlsessiontemplates를 넣어준다
+id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
+<constructor-arg name="sqlSessionFactory">객체생성
+sqlsessionfactory는 바로 위 매퍼설정하면서 작성했던 sqlsessionfactory의 객체를 가져온다
+
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory">
+</constructor-arg>
+</bean>
+
+이 기능이
+session.insert
+session.selectlist등으로 짧게 사용 가능하게 만들어준다.
+======================================================================================================
+kr.co.persistence(dao)
+kr.co.service
+생성
+persistence와 service도
+controller처럼
+@repository/@service어노테이션을 붙이고
+root-context에 component설정을해서 객체를 생성한다.
