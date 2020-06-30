@@ -1,0 +1,73 @@
+kr.co.ca로 패키지를 만들면
+url 주소가 ca로 끝나지만
+
+======================================================================================================
+
+servers의 모듈에서 path를 /를 남기고 지워주면 root - context에서 작업을 하게 만든다.
+
+해당war파일을 ROOT.war(대문자root)을 톰캣에 놓어준다면 위의 과정없이 진행된다.
+war file 추출방법 - 프로젝트 우클릭 export - warfile
+
+서비스 - 포트번호없애는법 - 포트번호80
+tomcat-conf-server.xml 8089->80
+이클립스의톰캣과 개별적파일
+
+
+컨트롤러만들어라
+->
+어노테이션붙어라
+객체만들도록 servlet-context설정
+======================================================================================================
+requestmapping의 value에는 {"hello","HELLO"}와 같은 배열을 넣을 수 있다.
+return 값인 string은 servlet-context의 InternalResourceViewResolver를통해
+web-inf의views에있는 해당string.jsp가실행
+======================================================================================================
+get방식으로 서버가 넘겨주는 데이터를 한글 인코딩 하기 위해 
+method를 만들어 인코딩하는 방식을 사용하지 않고
+수업에서는 빠른 진도를 위해 한번만 해놓으면 되는 방법인 아래의 방법을 사용한다.
+servers-tomcat v7.0~-server.xml의
+65번line<Connector connectionTimeout="20000" port="8089" protocol="HTTP/1.1" redirectPort="8443"/>
+에 URIEncoding="UTF-8"를 추가한다.
+======================================================================================================
+spring mvc model기본구조
+	 					    ▶		  ▶
+					Controller  ◀	service   ◀	dao(repository)
+		Handler Mapping			▲ ▼			▲	▼
+	데이터처리방법요청▲▼컨트롤러에대한정보	▲ ▼			mybatis
+고객		▶	   DispatcherServlet				▲	▼
+		◀			   ▼▶	View Resolver		DBMS(oracle)
+			   ▲ ▼		 ▲◀
+			View(jsp)								
+
+
+DispatcherServlet은 controller가 반환하는것이 어떤값인지 몰라
+View Resolver를 통해 해석
+
+기존과 차이점은 service는 dao와 비슷하지만 transaction작업 구현을 이곳에서하고
+
+dao에서 하던 sql 작업을 mybatis에서 한다.
+
+실직적으로 자주 구현하는것들
+controller(command Class)
+service(transaction구현)
+dao
+mybatis(sql 작업)
+view(jsp)
+======================================================================================================
+pom.xml을 통한 dependancy 추가방법(maven을 통해 파일을 내려받는법)
+받을것 
+mybatis 3.2.8
+mybatis-spring 1.2.2
+spring-jdbc
+spring-test
+
+버전이 안나온것들은 스프링사용하는 버전인 4.2.1 
+${org.springframework-version}코드를 버전에 넣어도 된다.
+https://mvnrepository.com/
+가장유명한 사이트
+
+이곳에서 dependency 코드를 찾아 pom.xml dependencies에 넣는다.
+======================================================================================================
+db관리 root-context에서 하는데
+root-context의 namespace tab
+aop/context/jdbc/mybatis/tx/추가하고 저장

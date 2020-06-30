@@ -74,7 +74,7 @@ src\
 				\spring\ 
 = 두개의 환경설정존재
 (root-)의 자식이 appservlet폴더 내 servlet-con~ 
-servlet-은 웹과 관련된 환경설정 파일\컨트롤러포함
+servlet-은 웹과 관련된 환경설정 파일\컨트롤러포함(컨트롤러를제외하면 거의없다.)
 root-con~은 그외(service/repository(DAO)/DB/log 등)
 					\appservlet\servlet-context.xml
 					\root-context.xml
@@ -185,7 +185,7 @@ public String home(local locale,~) -->이method를 mvc 핸들러 라고 부른�
 return "string";의 의미는
 web-inf/views/string.jsp
 return형식으로 string을 사용하지 않고 void를 사용한다면 
-method의 이름과 같은 web-inf/views의 jsp파일을 실행시킨다.
+uri와 같은 web-inf/views의 jsp파일을 실행시킨다.
 
 기존처럼
 httpservletrequest requset 파라미터를넣어 request.getparameter를통해 받아올 필요 없이
