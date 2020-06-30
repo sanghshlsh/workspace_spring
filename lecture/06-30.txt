@@ -143,6 +143,8 @@ datafactory대신 SqlSessionFactory sqlFactory
 session 연결은 sqlFactory의 openSession method
 
 ======================================================================================================
+참고 -https://sjh836.tistory.com/130
+Mybatis - spring 연동
 
 src/main/resources 에 mappers 폴더 만들고 mapper파일들을 모아준다.
 우선 xml file생성
@@ -165,8 +167,16 @@ select * from member같은 sql문을 실행하더라도 list타입으로 받지 
 root-context에 매퍼폴더 위치 설정
 <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
 mappers폴더안의 어떤폴더인지 상관없이 xxxMapper.xml이면 mapper로 인식하도록 해주는 설정
-======================================================================================================
 
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+<property name="dataSource" ref="dataSource"></property>
+<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+</bean>
+
+
+======================================================================================================
+sqlSessionTemplates 클래스 활용 연동 - 위와 연계하여
 
 bean생성
 id = sqlSession 
