@@ -90,6 +90,31 @@ org.springframework.jdbc.datasource.DriverManagerDataSource.class
 </bean>
 
 ======================================================================================================
+mybatis 환경설정
+
+maven에있는
+mybatis-spring의 org.mybatis.spring에있는 sqlsessionfactorybean
+
+property 객체참조할떄는ref 문자를참조하면string
+property name = datasource는 위에서 작성한 datasource객체참조
+
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+<property name="dataSource" ref="dataSource"></property>
+</bean>
+
+작성후 src/main/resources에 mybatis-config.xml 생성
+mybatis-config.xml검색하여
+https://mybatis.org/mybatis-3/ko/getting-started.html접속
+xml에서 sqlsessionfacory빌드하기 코드 복사하여 넣고 저장(단 configuration안에 있는 코드는 지워준다.)
+
+configuration 내부 작성내용
+<typeAliases>
+		<package name="kr.co.domain"/> <--이처럼 한번 작성하거나
+		<typeAlias alias="MemberDTO" (type="kr.co.domain.MemberDTO"생략가능)/> <--이를 패키지안 클래스마다 작성
+</typeAliases>
+	
+
+======================================================================================================
 jdbc연결 잘되었는지 테스트
 src/test/java에 클래스성성
 @runwith 어노테이션 붙이고 @RunWith(SpringJUnit4ClassRunner.class)
@@ -107,3 +132,4 @@ class안쪽에
 반환형은 반드시 void 파라미터는 반드시 없어야 한다.
 
 테스트시 모든 메서드를 테스트하려면 그냥 우클릭을통해 하고 특정 메소드만 하고 싶다면 메소드이름을 드래그 한 후 runas junit
+
