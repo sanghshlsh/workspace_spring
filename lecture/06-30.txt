@@ -41,7 +41,7 @@ spring mvc model기본구조
 			   ▲ ▼		 ▲◀
 			View(jsp)								
 
-
+https://devpad.tistory.com/24 참고
 DispatcherServlet은 controller가 반환하는것이 어떤값인지 몰라
 View Resolver를 통해 해석
 
