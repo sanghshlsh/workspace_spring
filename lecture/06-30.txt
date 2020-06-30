@@ -70,6 +70,26 @@ https://mvnrepository.com/
 
 이곳에서 dependency 코드를 찾아 pom.xml dependencies에 넣는다.
 ======================================================================================================
-db관리 root-context에서 하는데
+jdbc관리 root-context에서 하는데
 root-context의 namespace tab
 aop/context/jdbc/mybatis/tx/추가하고 저장
+
+maven에 있는
+org.springframework.jdbc.datasource
+의 
+DriverManagerDataSource.class
+copy q~name
+org.springframework.jdbc.datasource.DriverManagerDataSource.class
+.class제거하고 bean의 class로 넣어 bean 작성하여 객체생성
+4가지 프로퍼티 추가(driverclassname/url/username/password)
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"></property>
+<property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"></property>
+<property value="ca5" name="username"></property>
+<property value="ca5" name="password"></property>
+</bean>
+
+======================================================================================================
+jdbc연결 잘되었는지 테스트
+src/test/java에 클래스성성
+@runwith 어노테이션 붙이고 @RunWith(SpringJUnit4ClassRunner.class)
