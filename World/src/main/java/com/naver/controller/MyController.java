@@ -33,7 +33,7 @@ public class MyController {
 	
 	@RequestMapping(value = "test", method = RequestMethod.GET)
 	public void test(String name) {
-		name = Utils.toKor(name);
+//		name = Utils.toKor(name);
 		System.out.println(name);
 	}
 }
