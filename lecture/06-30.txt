@@ -81,7 +81,7 @@ DriverManagerDataSource.class
 copy q~name
 org.springframework.jdbc.datasource.DriverManagerDataSource.class
 .class제거하고 bean의 class로 넣어 bean 작성하여 객체생성
-4가지 프로퍼티 추가(driverclassname/url/username/password)
+4가지 property 추가(driverclassname/url/username/password)
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 <property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"></property>
 <property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"></property>
@@ -101,7 +101,7 @@ property name = datasource는 위에서 작성한 datasource객체참조
 <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 <property name="dataSource" ref="dataSource"></property>
 </bean>
-
+---------------
 작성후 src/main/resources에 mybatis-config.xml 생성
 mybatis-config.xml검색하여
 https://mybatis.org/mybatis-3/ko/getting-started.html접속
@@ -112,7 +112,9 @@ configuration 내부 작성내용
 		<package name="kr.co.domain"/> <--이처럼 한번 작성하거나
 		<typeAlias alias="MemberDTO" (type="kr.co.domain.MemberDTO"생략가능)/> <--이를 패키지안 클래스마다 작성
 </typeAliases>
-	
+--------------
+property로 mybatis 환경설정파일의 위치를 알려준다
+<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 
 ======================================================================================================
 jdbc연결 잘되었는지 테스트
@@ -124,7 +126,7 @@ src/test/java에 클래스성성
 	@ContextConfiguration(locations = {"file:/src/main/webapp/WEB-INF/spring/**/*.xml"})
 
 class안쪽에
-@Auotowired 어노테이션 적용
+@Auotowired(==@Inject) 어노테이션 적용
 	private DataSource dataFactory; 변수선언
 	기존까지는 이렇게 선언하면 datafactory는 null이었지만								autowired가 springframework가 관리하는 bean을 자동으로 넣어준다
 @Test
@@ -133,3 +135,9 @@ class안쪽에
 
 테스트시 모든 메서드를 테스트하려면 그냥 우클릭을통해 하고 특정 메소드만 하고 싶다면 메소드이름을 드래그 한 후 runas junit
 
+======================================================================================================
+Mybatis연결 잘되었는지 테스트
+위와 동일
+단 connnection대신 session
+datafactory대신 SqlSessionFactory sqlFactory
+session 연결은 sqlFactory의 openSession method
