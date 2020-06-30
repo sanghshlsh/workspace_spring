@@ -93,3 +93,17 @@ org.springframework.jdbc.datasource.DriverManagerDataSource.class
 jdbc연결 잘되었는지 테스트
 src/test/java에 클래스성성
 @runwith 어노테이션 붙이고 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration 어노테이션도 붙인다.
+	file:(/World/제거)src/main/webapp/WEB-INF/spring/(root-context.xml servletcontext까지 
+	고려하면 /**/*.xml로 대체 하는 경우도 있다.)
+	@ContextConfiguration(locations = {"file:/src/main/webapp/WEB-INF/spring/**/*.xml"})
+
+class안쪽에
+@Auotowired 어노테이션 적용
+	private DataSource dataFactory; 변수선언
+	기존까지는 이렇게 선언하면 datafactory는 null이었지만								autowired가 springframework가 관리하는 bean을 자동으로 넣어준다
+@Test
+테스트할 메소드에는 test어노테이션을 반드시 붙여준다.
+반환형은 반드시 void 파라미터는 반드시 없어야 한다.
+
+테스트시 모든 메서드를 테스트하려면 그냥 우클릭을통해 하고 특정 메소드만 하고 싶다면 메소드이름을 드래그 한 후 runas junit
