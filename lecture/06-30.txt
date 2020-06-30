@@ -200,4 +200,4 @@ kr.co.service
 persistence와 service도
 controller처럼
 @repository/@service어노테이션을 붙이고
-root-context에 component설정을해서 객체를 생성한다.
+root-context에 component-scan설정을해서 객체를 생성한다.
