@@ -17,16 +17,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="${list }" var="dto">
+
 tNum : ${dto.tnum }<br>
 ID : ${dto.id }<br>
 Name : ${dto.name }<br>
 DID : ${dto.did }<br>
 DName : ${dto.dname }<br>
 WriteDay : ${dto.writeday }<br>
-<a href="/test/read/${dto.tnum }">
-title : ${dto.title }<br></a>
+title : ${dto.title }<br>
 content : ${dto.content }<hr><br><br>
-</c:forEach>
+
 </body>
 </html>

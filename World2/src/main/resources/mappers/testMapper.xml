@@ -12,9 +12,15 @@ on test.did=depart.did
 order by tnum desc
 	</select>
 	
-
-	
 	<insert id="insert">
 	 insert into test (tnum, id, did, title, content) values ((select nvl2(max(tnum), max(tnum+1), 1) from test),#{id},#{did},#{title},#{content})
 	</insert>
+	
+		<select id="read" resultType="TestDTO" >
+select * from test left join member
+on test.id = member.id
+left join depart
+on test.did=depart.did
+where tnum = #{tnum}
+	</select>
 </mapper>

@@ -10,4 +10,6 @@ public interface TestDAO {
 
 	void insert(TestDTO dto);
 
+	TestDTO read(int tnum);
+
 }

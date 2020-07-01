@@ -35,4 +35,10 @@ public class TestDAOimpl implements TestDAO{
 		session.insert(NS+".insert", dto);
 		
 	}
+	
+	@Override
+	public TestDTO read(int tnum) {
+		
+		return session.selectOne(NS+".read",tnum);
+	}
 }

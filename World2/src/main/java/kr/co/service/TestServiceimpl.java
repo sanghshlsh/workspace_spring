@@ -27,4 +27,8 @@ public class TestServiceimpl implements TestService {
 		testDAO.insert(dto);
 		
 	}
+	@Override
+	public TestDTO read(int tnum) {
+		return testDAO.read(tnum);
+	}
 }

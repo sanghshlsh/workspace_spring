@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,5 +40,11 @@ public class TestController {
 		return "redirect:/test/list";
 	}
 	
+	@RequestMapping(value = "/read/{tnum}")
+	public String read(@PathVariable int tnum,Model model) {
+		TestDTO dto = tService.read(tnum);
+		model.addAttribute("dto", dto);
+		return "/test/read";
+	}
 	
 }

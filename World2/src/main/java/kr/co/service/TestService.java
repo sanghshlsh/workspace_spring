@@ -10,4 +10,6 @@ public interface TestService {
 
 	void insert(TestDTO dto);
 
+	TestDTO read(int tnum);
+
 }
