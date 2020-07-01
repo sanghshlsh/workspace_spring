@@ -10,4 +10,6 @@ public interface MemberService {
 
 	List<MemberDTO> list();
 
+	MemberDTO read(String id);
+
 }

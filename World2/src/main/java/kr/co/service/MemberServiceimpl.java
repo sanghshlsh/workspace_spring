@@ -26,4 +26,10 @@ public class MemberServiceimpl implements MemberService {
 		
 		return memberdao.list();
 	}
+	
+	@Override
+	public MemberDTO read(String id) {
+
+		return memberdao.read(id);
+	}
 }

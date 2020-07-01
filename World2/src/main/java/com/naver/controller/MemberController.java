@@ -40,8 +40,9 @@ public class MemberController {
 
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(Model model, String id) {
-		List<MemberDTO> list = memberService.read(id);
-		model.addAttribute("list", list);
+		//String id로 받아도 되지만 MemberDTO로 받아도 된다
+		MemberDTO dto = memberService.read(id);
+		model.addAttribute("dto", dto);
 	}
 
 }

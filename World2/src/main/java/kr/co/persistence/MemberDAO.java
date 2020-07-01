@@ -10,4 +10,6 @@ public interface MemberDAO {
 
 	List<MemberDTO> list();
 
+	MemberDTO read(String id);
+
 }

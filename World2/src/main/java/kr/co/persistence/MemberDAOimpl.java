@@ -31,4 +31,11 @@ public class MemberDAOimpl implements MemberDAO {
 		
 		//selectlist selectone 
 	}
+	
+	@Override
+	public MemberDTO read(String id) {
+		// TODO Auto-generated method stub
+		return session.selectOne(NS+".read", id);
+	}
+	
 }
