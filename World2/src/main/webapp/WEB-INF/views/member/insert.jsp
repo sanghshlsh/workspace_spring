@@ -23,9 +23,10 @@
 	member의 insert.jsp
 	<br>
 	<form action="/member/insert" method="post">
-		id: <input name="id"><br> name : <input name="name"><br>
-		age: <input name="age"><br> <input type="submit"
-			value="등록">
+		id: <input name="id"><br> 
+		name : <input name="name"><br>
+		age: <input name="age"><br> 
+		<input type="submit" value="등록">
 	</form>
 </body>
 </html>

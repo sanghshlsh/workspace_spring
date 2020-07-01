@@ -38,4 +38,16 @@ public class MemberDAOimpl implements MemberDAO {
 		return session.selectOne(NS+".read", id);
 	}
 	
+	@Override
+	public MemberDTO updateui(String id) {
+		// TODO Auto-generated method stub
+		return session.selectOne(NS+".updateui", id);
+	}
+	
+	@Override
+	public void update(MemberDTO dto) {
+		session.update(NS+".update", dto);
+		
+	}
+	
 }

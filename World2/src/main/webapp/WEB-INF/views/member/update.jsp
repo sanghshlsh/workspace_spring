@@ -17,10 +17,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-ID : ${dto.id }<br>
-Name : ${dto.name }<br>
-Age : ${dto.age }<br>
 
-<a href="/member/update/${dto.id }">수정</a> | <a href="/member/delete/${dto.id }">삭제</a> | <a href="/member/list">목록</a>
+
+<form action="/member/update" method="post">
+ID : <input name="id" value="${dto.id }" readonly><br>
+Name : <input name="name" value="${dto.name }"><br>
+Age : <input name="age" value="${dto.age }">
+<input type="submit" value="수정">
+</form>
+
+
 </body>
 </html>

@@ -32,4 +32,16 @@ public class MemberServiceimpl implements MemberService {
 
 		return memberdao.read(id);
 	}
+	
+	@Override
+	public MemberDTO updateui(String id) {
+		// TODO Auto-generated method stub
+		return memberdao.updateui(id);
+	}
+	
+	@Override
+	public void update(MemberDTO dto) {
+		memberdao.update(dto);
+		
+	}
 }
