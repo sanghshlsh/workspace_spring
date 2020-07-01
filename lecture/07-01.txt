@@ -59,3 +59,18 @@ references depart(did)
 );
 게시판만들기 - name/dname불러오기
 ==========================================
+
+오라클의 nvl/nvl2 함수
+nvl->값이 null일때 지정값출력
+nvl2->값이 null일떄 지정값1/ not null일때 지정값2
+
+createnum-
+insert into test (tnum,id,did,title,content) values (
+(select NVL2(max(tnum), max(tnum+1), 1) from test),
+'m001','d003','title','content' );
+
+list-join
+select * from test left join member
+on test.id = member.id
+left join depart
+on test.did=depart.did

@@ -19,6 +19,6 @@
 <body>
 <a href="/member/list">memberlist</a><br>
 <a href="/depart/list">departlist</a><br>
-<a href="/board/list">boardlist</a>
+<a href="/test/list">testlist</a>
 </body>
 </html>

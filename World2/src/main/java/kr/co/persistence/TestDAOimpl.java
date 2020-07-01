@@ -19,25 +19,19 @@ public class TestDAOimpl implements TestDAO{
 	@Override
 	public List<TestDTO> list() {
 
-		List<TestDTO> list = session.selectList(NS+".list");
-		for (TestDTO testDTO : list) {
-		TestDTO dto = session.selectOne(NS+".listid",testDTO.getId());
-		testDTO.setName(dto.getName());
-		dto = session.selectOne(NS+".listdid",testDTO.getDid());
-		testDTO.setDname(dto.getDname());
-		}
-		return list;
+//		List<TestDTO> list = session.selectList(NS+".list");
+//		for (TestDTO testDTO : list) {
+//		TestDTO dto = session.selectOne(NS+".listid",testDTO.getId());
+//		testDTO.setName(dto.getName());
+//		dto = session.selectOne(NS+".listdid",testDTO.getDid());
+//		testDTO.setDname(dto.getDname());
+//		}
+		return session.selectList(NS+".list");
 	}
 	
 	@Override
 	public void insert(TestDTO dto) {
 		
-		Integer tnum = session.selectOne(NS+".maxnum");
-		if (tnum == null) {
-			tnum = 0;
-		}
-		tnum+=1;
-		dto.setTnum(tnum);
 		session.insert(NS+".insert", dto);
 		
 	}
