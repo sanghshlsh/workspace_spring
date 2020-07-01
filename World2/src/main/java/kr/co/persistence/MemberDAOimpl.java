@@ -34,13 +34,13 @@ public class MemberDAOimpl implements MemberDAO {
 	
 	@Override
 	public MemberDTO read(String id) {
-		// TODO Auto-generated method stub
+		
 		return session.selectOne(NS+".read", id);
 	}
 	
 	@Override
 	public MemberDTO updateui(String id) {
-		// TODO Auto-generated method stub
+
 		return session.selectOne(NS+".updateui", id);
 	}
 	
