@@ -50,4 +50,10 @@ public class MemberDAOimpl implements MemberDAO {
 		
 	}
 	
+	@Override
+	public void delete(String id) {
+		session.delete(NS+".delete", id);
+		
+	}
+	
 }

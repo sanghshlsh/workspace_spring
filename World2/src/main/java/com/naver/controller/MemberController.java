@@ -59,5 +59,12 @@ public class MemberController {
 	
 		return "redirect:/member/list";
 	}
+	
+	@RequestMapping(value = "/delete/{id}")
+	public String delete(@PathVariable("id") String id) {
+		memberService.delete(id);
+		
+		return "redirect:/member/list";
+	}
 
 }

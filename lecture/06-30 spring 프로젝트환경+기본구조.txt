@@ -218,7 +218,7 @@ root-context에 component-scan설정을해서 객체를 생성한다.
 ======================================================================================================
 MemberController 생성
 
-@RequestMapping("member")어노테이션을 사용하여 컨트롤러를 좀 더 특정할 수 있다.
+@RequestMapping("member")어노테이션을 사용하여 컨트롤러를 좀 더 특정할 수 있다. 이떄 member는 /member로 써도 상관없다.
 member/insert 등을 사용할 수 있게 만들어줌
 
 스프링객체가 가지고 있는 bean을 바로 사용하기 위해선

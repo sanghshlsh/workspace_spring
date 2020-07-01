@@ -44,4 +44,11 @@ public class MemberServiceimpl implements MemberService {
 		memberdao.update(dto);
 		
 	}
+	
+	@Override
+	public void delete(String id) {
+		memberdao.delete(id);
+		
+	}
+	
 }

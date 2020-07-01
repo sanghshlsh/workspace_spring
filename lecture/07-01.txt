@@ -30,3 +30,16 @@ a tag에 parameter넣을때
 
 다음방식으로 넣는다. -read의 수정 삭제부분참고
 /member/read/${dto.id} 
+
+
+========================================================================
+table 생성
+
+create table depart(
+did varchar2(5) primary key,
+dname varchar2(30) not null
+);
+insert기능구현
+
+service impl에서 
+@Transactional 어노테이션을 붙이면 transaction이 구현된다.

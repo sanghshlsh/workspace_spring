@@ -16,4 +16,6 @@ public interface MemberService {
 
 	void update(MemberDTO dto);
 
+	void delete(String id);
+
 }
