@@ -10,4 +10,16 @@
 	<select id="list" resultType="DepartDTO">
 		select * from depart
 	</select>
+	
+	<select id="read" resultType="DepartDTO">
+		select * from depart where did = #{did}
+	</select>
+	
+	<update id="update">
+		update depart set dname = #{dname} where did = #{did}
+	</update>
+	
+	<delete id="delete">
+		delete from depart where did = #{did}
+	</delete>
 </mapper>

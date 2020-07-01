@@ -10,5 +10,13 @@ public interface DepartDAO {
 
 	List<DepartDTO> insert();
 
+	DepartDTO read(String did);
+
+	DepartDTO updateui(String did);
+
+	void update(DepartDTO dto);
+
+	void delete(String did);
+
 
 }

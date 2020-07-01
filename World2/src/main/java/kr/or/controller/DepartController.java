@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,4 +39,36 @@ public class DepartController {
 		
 	}
 	
+	@RequestMapping(value = "/read/{did}")
+	public String read(@PathVariable String did,Model model) {
+		DepartDTO dto = dService.read(did);
+		model.addAttribute("dto", dto);
+		
+		return "/depart/read";
+	}
+	
+	@RequestMapping(value = "/update/{did}")
+	public String updateui(@PathVariable String did, Model model) {
+		DepartDTO dto = dService.updateui(did);
+		model.addAttribute("dto",dto);
+		
+		return "/depart/update";
+	}
+	
+	@RequestMapping(value = "/update",method = RequestMethod.POST)
+	public String update(DepartDTO dto) {
+		dService.update(dto);
+		
+		return "redirect:/depart/list";
+		
+	}
+	
+	@RequestMapping(value = "/delete/{did}", method = RequestMethod.GET)
+	public String delete(@PathVariable String did) {
+		dService.delete(did);
+		
+		return "redirect:/depart/list";
+		
+	}
+
 }

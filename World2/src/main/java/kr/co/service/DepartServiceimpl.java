@@ -28,4 +28,28 @@ public class DepartServiceimpl implements DepartService {
 	
 		return departDao.insert();
 	}
+	
+	@Override
+	public DepartDTO read(String did) {
+	
+		return departDao.read(did);
+	}
+	
+	@Override
+	public DepartDTO updateui(String did) {
+		// TODO Auto-generated method stub
+		return departDao.updateui(did);
+	}
+	
+	@Override
+	public void update(DepartDTO dto) {
+		departDao.update(dto);
+		
+	}
+	@Override
+	public void delete(String did) {
+		departDao.delete(did);
+		
+	}
+	
 }

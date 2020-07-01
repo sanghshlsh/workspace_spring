@@ -17,9 +17,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="list" var="dto">
-id : ${dto.did } | name : ${dto.dname }<br>
+<c:forEach items="${list}" var="dto">
+<a href="/depart/read/${dto.did }">id : ${dto.did } | name : ${dto.dname} </a>
+<br>
 </c:forEach>
-
+<br>
+<a href="/depart/insert">입력</a>
 </body>
 </html>

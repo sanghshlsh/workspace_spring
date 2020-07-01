@@ -10,4 +10,12 @@ public interface DepartService {
 
 	List<DepartDTO> list();
 
+	DepartDTO read(String did);
+
+	DepartDTO updateui(String did);
+
+	void update(DepartDTO dto);
+
+	void delete(String did);
+
 }

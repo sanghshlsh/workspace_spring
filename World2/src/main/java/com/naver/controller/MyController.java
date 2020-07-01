@@ -36,4 +36,9 @@ public class MyController {
 //		name = Utils.toKor(name);
 		System.out.println(name);
 	}
+	
+	@RequestMapping(value = "mainpage")
+	public void mainpage() {
+		
+	}
 }

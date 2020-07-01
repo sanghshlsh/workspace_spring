@@ -43,3 +43,19 @@ insert기능구현
 
 service impl에서 
 @Transactional 어노테이션을 붙이면 transaction이 구현된다.
+
+==========================================
+create table test(
+tnum number(6) primary key,
+id varchar2(4) ,
+did varchar2(5),
+title varchar2(21) not null,
+content varchar2(90) not null,
+writeday date default sysdate,
+constraint id_fk foreign key (id)
+references member(id),
+constraint did_fk foreign key (did)
+references depart(did)
+);
+게시판만들기 - name/dname불러오기
+==========================================

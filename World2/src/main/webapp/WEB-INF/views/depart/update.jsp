@@ -17,11 +17,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${list }" var="dto">
-	<a href="/member/read?id=${dto.id }">${dto.id }: ${dto.name} </a>
-	<br>
-	
-	</c:forEach>
-
+<form action="/depart/update" method="post">
+id : <input name="did" value="${dto.did }" readonly><br>
+name : <input name="dname" value="${dto.dname }"><br>
+<input type="submit" value="수정">
+</form>
+<a href="/depart/list">목록으로</a>
 </body>
 </html>

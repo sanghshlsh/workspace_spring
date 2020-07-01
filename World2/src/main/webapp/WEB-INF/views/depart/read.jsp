@@ -17,11 +17,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${list }" var="dto">
-	<a href="/member/read?id=${dto.id }">${dto.id }: ${dto.name} </a>
-	<br>
-	
-	</c:forEach>
-
+id : ${dto.did }<br>
+name : ${dto.dname }<br>
+<a href="/depart/update/${dto.did }">수정</a> | <a href="/depart/delete/${dto.did }">삭제</a> |<a href="/depart/list">목록</a>
 </body>
 </html>

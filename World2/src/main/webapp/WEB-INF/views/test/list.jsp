@@ -17,11 +17,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${list }" var="dto">
-	<a href="/member/read?id=${dto.id }">${dto.id }: ${dto.name} </a>
-	<br>
-	
-	</c:forEach>
-
+<c:forEach items="${list }" var="dto">
+tNum : ${dto.tnum }<br>
+ID : ${dto.id }<br>
+Name : ${dto.name }<br>
+DID : ${dto.did }<br>
+DName : ${dto.dname }<br>
+WriteDay : ${dto.writeday }<br>
+title : ${dto.title }<br>
+content : ${dto.content }<hr><br><br>
+</c:forEach>
 </body>
 </html>

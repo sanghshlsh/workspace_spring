@@ -17,11 +17,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${list }" var="dto">
-	<a href="/member/read?id=${dto.id }">${dto.id }: ${dto.name} </a>
-	<br>
+	<form action="/test/insert" method="post">
+	ID: <input name="id" required><br>
+	DID: <input name ="did" required><br>
+	Title: <input name="title" required><br>
+	Content: <textarea rows="5" cols="5" name="content"></textarea><br>
+	<input type="submit" value="등록">
 	
-	</c:forEach>
+	</form>
+
 
 </body>
 </html>

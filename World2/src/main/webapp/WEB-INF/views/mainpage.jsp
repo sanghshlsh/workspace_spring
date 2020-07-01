@@ -17,11 +17,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${list }" var="dto">
-	<a href="/member/read?id=${dto.id }">${dto.id }: ${dto.name} </a>
-	<br>
-	
-	</c:forEach>
-
+<a href="/member/list">memberlist</a><br>
+<a href="/depart/list">departlist</a><br>
+<a href="/board/list">boardlist</a>
 </body>
 </html>

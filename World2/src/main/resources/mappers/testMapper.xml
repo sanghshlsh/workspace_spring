@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t.e.s">
+	
+	<select id="list" resultType="TestDTO" >
+		select * from test
+	</select>
+	
+	<select id="listid" resultType="TestDTO">
+		select * from member where id = #{id}
+	</select>
+		<select id="listdid" resultType="TestDTO">
+		select * from depart where did = #{did}
+	</select>
+	
+	<select id="maxnum" resultType="int">
+		select max(tnum) from test
+	</select>
+	
+	<insert id="insert">
+	 insert into test (tnum, id, did, title, content) values (#{tnum},#{id},#{did},#{title},#{content})
+	</insert>
+</mapper>

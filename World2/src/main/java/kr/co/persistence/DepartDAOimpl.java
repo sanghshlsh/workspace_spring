@@ -26,4 +26,24 @@ public class DepartDAOimpl implements DepartDAO {
 	public List<DepartDTO> insert() {
 		return session.selectList(NS+".list");
 	}
+	
+	@Override
+	public DepartDTO read(String did) {
+		return session.selectOne(NS+".read",did);
+	}
+	
+	@Override
+	public DepartDTO updateui(String did) {
+		return read(did);
+	}
+	
+	@Override
+	public void update(DepartDTO dto) {
+		session.update(NS+".update", dto);
+	}
+	
+	@Override
+	public void delete(String did) {
+		session.delete(NS+".delete",did);
+	}
 }
