@@ -67,12 +67,22 @@ public class AjaxTestController {
 
 	@ResponseBody
 	@RequestMapping(value = "at4", method = RequestMethod.POST)
-	public void at4(@RequestParam Map<String, Object> map ) throws Exception {
+	public List<Map<String, Object>> at4(@RequestParam Map<String, Object> map ) throws Exception {
 		String jsonStr = map.get("listStr").toString();
 		
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.readValue(jsonStr, new TypeReference<ArrayList<Map<String, Object>>>() {
+		List<Map<String, Object>> list = mapper.readValue(jsonStr, new TypeReference<ArrayList<Map<String, Object>>>() {
 		});
+		
+		for (Map<String, Object> m : list) {
+			System.out.println("::::::::::::::::::::::::::::::");
+			System.out.println(m.get("id"));
+			System.out.println(m.get("name"));
+			System.out.println(m.get("age"));			
+			System.out.println("::::::::::::::::::::::::::::::");
+		}
+		
+		return list;
 		
 	}
 }

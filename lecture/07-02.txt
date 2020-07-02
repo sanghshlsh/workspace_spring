@@ -38,6 +38,9 @@ jquery기본 코드
 $(document).ready(function(){}); 작성 후 내부에 작성
 
 $("button") 대상 .click(function(){}); <-이벤트핸들러
+ 이코드는
+$("body").on("click", "button", function() {}); 를 사용할 수도 있는데 위는 동적인코드는사용불가 이는 모두 사용가능 - body는 button의 부모태그를 사용하면 되는 자리.
+
 내부에
 $.ajax({}); 내부에 전송type/url/datatype-통신하고 넘겨받을/
 data{두개이상들어갈 수 있으니 중괄호로 묶는다.(속성값이 숫자라면 ''로 감싸지 않는다.-json형태}/
@@ -66,9 +69,18 @@ $() 선택자 선정할때
 var msg = $("p").text(); <- p태그의 text를 받아와서 msg에 넣는것
 $("p").text(result); p태그의 text에 result 입력
 =================================================================================================
-
+Ajax 8가지
+1~4 AjaxTestController
+Ajax String
+-at1
+Ajax array
+-at2
 배열을 Ajax에서 보낼 땐 Ajax 속성에 traditional : true, 를 추가해야한다.
-
+Ajax DTO
+-at3
+================================================================================================
+Ajax List
+-at4
 list를 사용하기 위해선 문자열로 변환하여 보내줘야하는데
 이는 JACKSON bind 사용
 이를 위해 받아온 데이터를 ObjectMapper의 writevalueasstring method를 이용 문자열로 변환 후 pageContext에 바인딩하여 활용
@@ -77,3 +89,12 @@ list를 사용하기 위해선 문자열로 변환하여 보내줘야하는데
 listStr : JSON.stringify(${listStr})  방식을 활용한다.
 이 listStr을 controller에서 받으면 map으로 문자열이 출력되는데 이를 이용하기 위해 
 @RequestParam 어노테이션을 붙인 Map 형태로 jsp에서 보내온 listStr을 받고 이 데이터를 뽑아내 tostring method를 통해 문자열로 변환 시킨 뒤 ObjectMapper의 readvalue method를 활용 다시 list로 변환시킨다.
+
+받아온 데이터를 사용할 때는 위에서 JS객체생성법에서 썻던 JSON.parse()를 사용 obj를 만들고 
+obj[0]['id']방식으로 하나하나 사용하거나
+for in문을 이용하여 데이터를 모두 사용해도 된다.
+================================================================================================
+4버전부터 생긴 @RestController 활용
+
+Testcontroller -> view -ajax통신으로---> restController에 요청
+restcontroller에는 method위에 @requestbody 어노테이션을를 붙이지 않고 parameter로 붙인다.

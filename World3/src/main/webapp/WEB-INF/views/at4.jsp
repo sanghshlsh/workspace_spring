@@ -50,7 +50,16 @@ $(document).ready(function(){
 				listStr : JSON.stringify(${listStr}) 	
 					} ,
 				success : function(result){
-					$("p").text(result);
+					var obj = JSON.parse(result);
+					
+					$("p").text(obj[0]['id']);
+					for(var i = 0 ; i <obj.length ; i++){
+						for(x in obj[i]){
+							console.log(x);
+							console.log(obj[i][x]);
+							console.log(":::::::::::::::::::::::")
+							}
+						}
 					}
 				
 				});
