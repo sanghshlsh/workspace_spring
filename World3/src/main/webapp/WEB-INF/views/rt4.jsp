@@ -1,3 +1,5 @@
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -20,38 +22,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-	버튼위 부모태그인 body를 통해 버튼을 클릭하는 방법
-	'X-HTTP-Method-Override' : 'POST' --이 post는 ajax의 type과 관련있다.
-	ajax의 type은 /조회get/입력post/수정put/삭제delete사용.
-	<br>
-	<button>rt1 Test</button>
+
+	<%
+		Object list = request.getAttribute("list");
+	ObjectMapper mapper = new ObjectMapper();
+	String listStr = mapper.writeValueAsString(list);
+	pageContext.setAttribute("listStr", listStr);
+	%>
+
+	<div>
+		<button>rt4 test</button>
+	</div>
 	<p></p>
+
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("body").on("click", "button", function() {
-				var test1 = "hello";
-
+			$("div").on("click", "button", function() {
+				var listStr = ${listStr};
 				$.ajax({
 					type : 'post',
-					url : 'rt1',
+					url : 'rt4',
 					headers : {
 						'Content-Type' : 'application/json',
-						'X-HTTP-Method-Override' : 'POST'
-						},
+						'X-HTTP-Method-Override' : 'POST'					
+							},
 					dataType : 'text',
 					data : JSON.stringify({
-					test1 : test1
+					listStr : listStr
 						}),
 					success : function(result){
-						console.log(result);
+					console.log(result);
+						},
+					error : function(request, status, error){
+					console.log(error);
 						}
-					
-					
 				});
 			});
 		});
 	</script>
-
 </body>
 </html>

@@ -20,34 +20,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-	버튼위 부모태그인 body를 통해 버튼을 클릭하는 방법
-	'X-HTTP-Method-Override' : 'POST' --이 post는 ajax의 type과 관련있다.
-	ajax의 type은 /조회get/입력post/수정put/삭제delete사용.
-	<br>
-	<button>rt1 Test</button>
-	<p></p>
+	<div>
+
+
+		<button class="btn">rt2 test</button>
+
+	</div>
+
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("body").on("click", "button", function() {
+			$("div").on("click", ".btn", function() {
 				var test1 = "hello";
-
+				var test2 = "world";
 				$.ajax({
 					type : 'post',
-					url : 'rt1',
+					url : 'rt2',
 					headers : {
 						'Content-Type' : 'application/json',
 						'X-HTTP-Method-Override' : 'POST'
-						},
+					},
 					dataType : 'text',
 					data : JSON.stringify({
-					test1 : test1
-						}),
-					success : function(result){
+						test1 : test1,
+						test2 : test2
+					}),
+					success : function(result) {
 						console.log(result);
-						}
-					
-					
+						var obj = JSON.parse(result);
+						console.log(obj);
+					},
+					error : function(request, status, error) {
+						console.log(error);
+					}
 				});
 			});
 		});
