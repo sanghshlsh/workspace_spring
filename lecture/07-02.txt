@@ -39,8 +39,13 @@ $(document).ready(function(){}); 작성 후 내부에 작성
 
 $("button") 대상 .click(function(){}); <-이벤트핸들러
 내부에
-$.ajax({}); 내부에 전송type/url/datatype/
-data{두개이상들어갈 수 있으니 중괄호로 묶는다.(속성값이 숫자라면 ''로 감싸지 않는다.}/
+$.ajax({}); 내부에 전송type/url/datatype-통신하고 넘겨받을/
+data{두개이상들어갈 수 있으니 중괄호로 묶는다.(속성값이 숫자라면 ''로 감싸지 않는다.-json형태}/
+-JavaScript에서 객체를 생성 할 수 있는 방법
+	1.Object class를 이용해 객체 생성
+	2.function keyword를 이용 class생성 그 클래스를 이용해 객체 생성
+	3.JSON(javaScaript Object Notation) - var obj = JSON.parse(result);
+						객체접근 obj.id
 success - 속성값으로  (result) 받아온 데이터를 넣은 function을 넣는다.
 error - 마찬가지로 (request, status, error)를 function안에 넣어야한다.
 속성: 속성값을 넣고 ,(구분자)를 넣는다.
@@ -63,3 +68,12 @@ $("p").text(result); p태그의 text에 result 입력
 =================================================================================================
 
 배열을 Ajax에서 보낼 땐 Ajax 속성에 traditional : true, 를 추가해야한다.
+
+list를 사용하기 위해선 문자열로 변환하여 보내줘야하는데
+이는 JACKSON bind 사용
+이를 위해 받아온 데이터를 ObjectMapper의 writevalueasstring method를 이용 문자열로 변환 후 pageContext에 바인딩하여 활용
+
+이를 보낼때는
+listStr : JSON.stringify(${listStr})  방식을 활용한다.
+이 listStr을 controller에서 받으면 map으로 문자열이 출력되는데 이를 이용하기 위해 
+@RequestParam 어노테이션을 붙인 Map 형태로 jsp에서 보내온 listStr을 받고 이 데이터를 뽑아내 tostring method를 통해 문자열로 변환 시킨 뒤 ObjectMapper의 readvalue method를 활용 다시 list로 변환시킨다.
