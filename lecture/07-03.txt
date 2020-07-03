@@ -1,0 +1,44 @@
+프로젝트시 웬만하면 동적인구조로 DB에서 받아와 뿌리는형식으로만들어라
+
+=============================================================
+게시판 작성
+1.table 생성
+create table board (
+bno number primary key,
+title varchar2(100) not null,
+content varchar2(3000) not null,
+writer varchar2(21) not null,
+viewcnt number default 0,
+regDate date default sysdate,
+updateDate date default sysdate
+);
+
+regDate - 
+updateDate - 
+
+2.domain 생성 - BoardVO / PageTO - mybatis에서 지원하는게 있기에 start/end는 필요 없긴 하다.-rowbounds지원 - session.selectlist-3번째parameter
+
+3.DAO interface생성
+
+4.mapper생성
+
+5.DAOimpl class생성
+
+6.service interface 생성
+
+7 serviceimpl class 생성
+
+8.controller
+
+9.view
+div class container - 기본 
+container-fluid - 상단헤더부분에 자주사용(왼쪽정렬되어있다)
+div class row 한줄
+id 명명법 관련(board(폴더)_read(페이지기능)_btn(태그)_reply(태그기능))
+주로 사용
+
+jquery사용시 location의 href함수는 사용이 안될수 도 있어
+assign("path");를 사용
+
+
+글조회수증가 -> transaction -> service에서 한다.
