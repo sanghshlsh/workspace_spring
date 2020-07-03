@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.domain.BoardVO;
+import kr.co.domain.PageTO;
 import kr.co.persistence.BoardDAO;
 
 @Service
@@ -46,5 +47,10 @@ public class BoardServiceimpl implements BoardService {
 	@Override
 	public void delete(int bno) {
 		bDao.delete(bno);
+	}
+	
+	@Override
+	public PageTO listPage(int curPage) {
+		return bDao.listPage(curPage);
 	}
 }

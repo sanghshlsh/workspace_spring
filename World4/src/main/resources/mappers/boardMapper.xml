@@ -30,4 +30,12 @@
 	<delete id="delete">
 		delete from board where bno = #{bno}
 	</delete>
+	
+	<select id="getAmount" resultType="Integer">
+		select count(bno) from board
+	</select>
+	
+	<select id="listPage" resultType="BoardVO">
+	select * from (select * from (select rownum rnum, bno, title, writer, regDate, viewcnt from board order by rnum desc) where rnum >= #{startNum} and #{endNum} >= rnum) order by rnum asc 
+	</select>
 </mapper>

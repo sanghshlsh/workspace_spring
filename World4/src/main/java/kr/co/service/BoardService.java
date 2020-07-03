@@ -3,6 +3,7 @@ package kr.co.service;
 import java.util.List;
 
 import kr.co.domain.BoardVO;
+import kr.co.domain.PageTO;
 
 public interface BoardService {
 	void insert(BoardVO vo);
@@ -16,4 +17,6 @@ public interface BoardService {
 	void update(BoardVO vo);
 
 	void delete(int bno);
+
+	PageTO listPage(int curPage);
 }

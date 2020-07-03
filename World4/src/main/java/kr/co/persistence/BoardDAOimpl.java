@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.domain.BoardVO;
+import kr.co.domain.PageTO;
 
 @Repository
 public class BoardDAOimpl implements BoardDAO {
@@ -60,5 +61,15 @@ public class BoardDAOimpl implements BoardDAO {
 	@Override
 	public void delete(int bno) {
 		session.delete(NS+".delete", bno);
+	}
+	
+	@Override
+	public PageTO listPage(int curPage) {
+		Integer amount = session.selectOne(NS+".getAmount", curPage);
+		PageTO to = new PageTO(curPage);
+		to.setAmount(amount);
+		List<BoardVO> list = session.selectList(NS+".listPage", to);
+		to.setList(list);
+		return to;
 	}
 }

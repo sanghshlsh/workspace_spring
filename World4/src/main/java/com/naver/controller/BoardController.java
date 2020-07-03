@@ -28,8 +28,7 @@ public class BoardController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(BoardVO vo) {
 		bService.insert(vo);
-		
-		return "redirect:/board/list";
+		return "redirect:/board/listPage/1";
 	}
 	
 	@RequestMapping(value = "/list")
@@ -64,6 +63,13 @@ public class BoardController {
 	@RequestMapping(value = "/delete/{bno}")
 	public String delete(@PathVariable("bno") int bno) {
 		bService.delete(bno);
-		return "redirect:/board/list";
+		return "redirect:/board/listPage/1";
+	}
+	
+	@RequestMapping(value = "/listPage/{curPage}")
+	public String listPage(@PathVariable("curPage") int curPage, Model model) {
+		PageTO to = bService.listPage(curPage);
+		model.addAttribute("to", to);
+		return "/board/listpage";
 	}
 }

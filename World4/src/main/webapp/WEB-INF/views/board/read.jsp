@@ -72,7 +72,7 @@
 				location.assign("/board/delete/${vo.bno}");
 			});
 			$("div").on("click","#list",function(){
-				location.assign("/board/list");
+				location.assign("/board/listPage/1");
 			});
 		});
 
