@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group">
+			<div class="form-group" id="btnDiv">
 				<button class="btn btn-info"  id="reply_form">댓글</button>
 				<button class="btn btn-warning" id="update">수정</button>
 				<button class="btn btn-danger" id="delete">삭제</button>
@@ -63,19 +63,45 @@
 			</div>
 		</div><!--  class = row -->
 		<div class="row">
+			<div class="collapse" id="myCollapsible">
+				<div class="form-group">
+					<label for="replyer">작성자</label>
+					<input class="form-control" id="replyer"><!-- form으로 묶어 데이터를 보내는 것이 아닌 ajax로 데이터를 보내기 때문에 name태그가 필요 없고 id태그가 필요하다.-->
+				</div>
+				
+				<div class="form-group">
+					<label for="replytext">내용</label>
+					<input class="form-control" id="replytext">
+				</div>
 		
+				<div class="form-group">
+					<button class="btn btn-primary" id="replyInsertBtn">댓글 등록</button>
+				</div>
+				
+			</div>
 		</div>
 	</div><!-- class = container -->
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("div").on("click","#update",function(){
+			var bno = ${vo.bno};
+			
+			$("#btnDiv").on("click","#update",function(){
 				location.assign("/board/update/${vo.bno}");
 			});
-			$("div").on("click","#delete",function(){
+			$("#btnDiv").on("click","#delete",function(){
 				location.assign("/board/delete/${vo.bno}");
 			});
-			$("div").on("click","#list",function(){
+			$("#btnDiv").on("click","#list",function(){
 				location.assign("/board/list");
+			});
+			$("#btnDiv").on("click","#reply_form",function(){
+				$("#myCollapsible").collapse("toggle");
+			});
+
+			$("#replyInsertBtn").click(function(){
+				var replyer = $("#replyer").val();
+				var replytext = $("#replytext").val();
+
 			});
 		});
 

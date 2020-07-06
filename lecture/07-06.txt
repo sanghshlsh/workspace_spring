@@ -56,3 +56,25 @@ select * from (select rownum rnum, bno, title, content, writer, viewcnt, regDate
 검색화면으로 그대로 돌아오게
 정석 -  read.jsp를 동적으로 만들어 알아서 가게끔
 편법 - sRead.jsp 작성
+
+=========================================================================
+read.jsp에서의 댓글작성
+form태그를 통해 데이터를 보내는 것이 아닌
+ajax를 통한 데이터 통신이기에 name태그는 필요 없고 id태그가 필요하다.
+
+collapse기능을 통해 댓글 버튼을 누를때 생겼다 없어졌다를 반복하게 만들것
+-div class="collapse"
+이후 script를 통해 댓글버튼을 누르면 활성화되도록 설정
+$("#btnDiv").on("click","#reply_form",function(){			$("#myCollapsible").collapse("toggle");
+});
+========================================================================
+댓글 테이블 생성
+create table reply(
+rno number primary key,
+bno number not null,
+replyer varchar2(30) not null,
+replytext varchar2(1000) not null,
+regdate date default sysdate,
+updatedate date default sysdate,
+constraint reply_fk_bno foreign key(bno) references board(bno)
+);
