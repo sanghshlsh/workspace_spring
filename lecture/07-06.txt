@@ -1,0 +1,35 @@
+page처리할떄는
+pageTO에 generic type <T>를 추가해줘야 한다,
+
+page처리를 위해
+session.selectList(statement, parameter, rowBounds);
+를 한다면
+parameter에는 null-> 이것은 검색을 할 떄 사용한다
+rowbounds ->객체만들어서 사용
+RowBounds rowBounds = new RowBounds(offset, limit)
+offset - 어디서부터	(0부터시작)
+limit - 몇개
+
+참고
+#{23}->23
+#{홍길동}->'홍길동'
+${홍길동}->홍길동
+
+검색시 dao에서 parameter에 여러 객체를 넣어야 한다면class를 이용하거나 map을 이용한다.
+map을 mabatis에서 사용할때도 같은방식으로 사용한다.
+mapper에서 컬럼을 변수로 줄 때는 #{}를 사용하지 않고 ${}를 사용한다.
+->위험한 방법이어서 자주 사용하는 방법은 아니다.
+
+mabatis에서 %를 넣은 방법은 orcle과 같다 || 를사용
+'%'||#{keyword}||'%'
+======================================================================
+
+일반적으로 transaction 작업은 service에서 수행한다.
+하지만 transaction 작업은 CUD	/	R은 포함되지않는다.
+R은 어디에서 하던 상관없다.
+자신의 기준에 맞춰서 하라.
+
+=====================================================================
+검색을 구현할 때는
+getbootstrap.com의 Buttons with dropdowns-component를 이용하라
+
