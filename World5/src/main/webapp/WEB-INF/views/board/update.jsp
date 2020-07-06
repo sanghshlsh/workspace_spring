@@ -51,7 +51,7 @@
 				$("form").submit();
 			});
 			$("div").on("click","#listbtn",function(){
-				location.assign("/board/listPage/1");
+				location.assign("/board/list");
 			});
 		});
 

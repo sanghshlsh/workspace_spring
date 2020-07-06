@@ -33,3 +33,26 @@ R은 어디에서 하던 상관없다.
 검색을 구현할 때는
 getbootstrap.com의 Buttons with dropdowns-component를 이용하라
 
+mybatis의
+sql 태그
+sql문을 include하는 태그(부분부분 사용가능)
+
+sql태그 내 if태그로 조건을걸어 include로 불러온다.
+
+cData 태그
+
+boardmapper의
+<select id="test" resultType="BoardVO"></select>
+스프링이전 사용법
+select * from (select rownum rnum, bno, title, content, writer, viewcnt, regDate from
+		(select * from board <include refid="search"></include> order by bno desc)
+		) where rnum between #{startNum} and #{endNum}
+이런 sql문은 sql문이 너무 길어 중간에 끊길 위험이 있는데 이는
+<!<CDATA[		]]><include~~~</><!<CDATA[		]]>
+<!<CDATA[]]>로 묶어준다.
+
+=========================================================================
+검색 -> 글 클릭 -> 목록시
+검색화면으로 그대로 돌아오게
+정석 -  read.jsp를 동적으로 만들어 알아서 가게끔
+편법 - sRead.jsp 작성

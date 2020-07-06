@@ -61,8 +61,11 @@
 				<button class="btn btn-danger" id="delete">삭제</button>
 				<button class="btn btn-primary" id="list">목록</button>
 			</div>
+		</div><!--  class = row -->
+		<div class="row">
+		
 		</div>
-	</div>
+	</div><!-- class = container -->
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("div").on("click","#update",function(){
@@ -72,7 +75,7 @@
 				location.assign("/board/delete/${vo.bno}");
 			});
 			$("div").on("click","#list",function(){
-				location.assign("/board/listPage/1");
+				location.assign("/board/list");
 			});
 		});
 

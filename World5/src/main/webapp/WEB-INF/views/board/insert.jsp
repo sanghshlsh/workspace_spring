@@ -57,7 +57,7 @@
 				});
 
 			$("#listbtn").click(function(){
-				location.href="/board/listPage/1";
+				location.href="/board/list";
 				});
 		
 		});
