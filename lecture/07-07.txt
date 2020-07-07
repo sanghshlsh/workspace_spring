@@ -1,3 +1,6 @@
+data.go.kr
+open api
+
 ============================================================================================================
 NVL2(true,truereturn,falsereturn)
 
@@ -22,4 +25,34 @@ O :	$("정적으로 만들어진 조상태그").on("click","대상",function(){}
 
 $(this) <- 지금 일어난 이벤트 트리거의 요소를 가르킴
 $(this).attr("xxx") 식으로 자주 이용
+
+$(this).parent().parent().remove(); $(this)의 부모의 부모 제거 parant()활용
 ============================================================================================================
+댓글 수정
+getbootstrap modal.js사용
+script내부에
+$("#myModal").modal("show"); 작성시 fade된 modal이 노출 
+이 창은 이렇게 뜨게하지 read페이지 들어올 시 팝업되도록 하는게 아닌 수정버튼이 눌리면 팝업되게 작성한다.
+modal코드에
+id추가 /data-backdrop="static" 커스텀 속성 부여 빈창을 눌러도 modal창이 닫히지 않게만듬
+댓글정보/버튼에 class부여 - ajax이용시 활용가능
+
+jquery에서 형제요소 탐색
+.siblings()
+.next()
+.nextAll()
+.nextUntil()
+.prev()
+.prevAll()
+.prevUntil()
+
+상위요소 탐색
+.parent()
+.parents()
+.parentsUntil()	
+.closest()
+하위요소 탐색
+.children()
+.find()
+
+replytext는 input태그이기에 text()가아닌 val()을 사용

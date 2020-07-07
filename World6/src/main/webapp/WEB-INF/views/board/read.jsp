@@ -53,7 +53,7 @@
 				<label for="updateDate">수정일</label>
 				<input readonly value="${vo.updateDate }" class="form-control">
 			</div>
-		</div>
+		</div><%--class = row --%>
 		<div class="row">
 			<div class="form-group" id="btnDiv">
 				<button class="btn btn-info"  id="reply_form">댓글</button>
@@ -79,7 +79,7 @@
 				</div>
 				
 			</div>
-		</div>
+		</div><%--class = row --%>
 		<div class="row" id="replies"><%--이 내부 코드들은 이미 아래 getList(bno) 함수에 넣어 두었기에  삭제해도 무관한 코드들 --%>
 			<div class="panel panel-success">
   				<div class="panel-heading">
@@ -89,20 +89,39 @@
   				<div class="panel-body">
     				<p> 댓글 내용입니다.</p>
     				<%-- 커스텀 데이터 속성 data- 로 시작 --%>
-    				<button data-rno="3" class="btn btn-warning btn-xs replymodify"> 수정 </button>
+    				<button data-name="홍길동" data-rno="3" class="btn btn-warning btn-xs replymodify"> 수정 </button>
     				<button data-rno="3" class="btn btn-danger btn-xs replydelete"> 삭제 </button>
   				</div>
 			</div>
-		</div>
+		</div><%--class = row --%>
+	<div class="row">
+		<div data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" id="myModal"><%--id추가 /data-backdrop="static" 커스텀 속성 부여 빈창을 눌러도 modal창이 닫히지 않게만듬--%>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-rno">rno 데이터</h4>
+					</div>
+					<div class="modal-body">
+						<p class="modal-replyer">댓글작성자&hellip;</p> 
+						<input class="modal-replytext form-control" value="댓글 내용 입니다.">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning modal-update" data-dismiss="modal">댓글 수정</button>
+ 					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</div><%--class = row --%>
 		
 	</div><!-- class = container -->	
 	
 	<script type="text/javascript">
+		var bno = ${vo.bno};
+		getList(bno);
+		
 		$(document).ready(function(){
-			var bno = ${vo.bno};
-
-			getList(bno);
-			
+				
 			$("#btnDiv").on("click","#update",function(){
 				location.assign("/board/update/${vo.bno}");
 			});
@@ -146,13 +165,18 @@
 
 			$("#replies").on("click",".replymodify",function(){
 				var rno = $(this).attr("data-rno");
-				alert(rno+"번 : 수정버튼이 눌렸습니다.");
+				var replyer = $(this).attr("data-name");
+				var replytext = $(this).prev().text();
+
+				$(".modal-rno").text(rno);
+				$(".modal-replyer").text(replyer);
+				$(".modal-replytext").val(replytext);
+				$("#myModal").modal("show");
 			});
 
 			$("#replies").on("click",".replydelete",function(){
 				var rno = $(this).attr("data-rno");
 				alert(rno+"번 : 삭제버튼이 눌렸습니다.");
-
 				$(this).parent().parent().remove();
 			});				
 		});
@@ -161,7 +185,7 @@
 			var str = '';			
 			$.getJSON("/replies/all/"+bno, function(data){
 				for(var i = 0 ; i < data.length ; i++){
-					str += '<div class="panel panel-success"><div class="panel-heading"><span>rno : '+ data[i]["rno"]+'</span>, <span>작성자 :'+ data[i]["replyer"]+'</span><span class="pull-right">'+data[i]["updatedate"]+'</span></div><div class="panel-body"><p> '+data[i]["replytext"]+'</p><button data-rno="'+ data[i]["rno"] +'" class="btn btn-warning btn-xs replymodify"> 수정 </button><button data-rno="'+ data[i]["rno"] +'" class="btn btn-danger btn-xs replydelete"> 삭제</button></div></div>';
+					str += '<div class="panel panel-success"><div class="panel-heading"><span>rno : '+ data[i]["rno"]+'</span>, <span>작성자 :'+ data[i]["replyer"]+'</span><span class="pull-right">'+data[i]["updatedate"]+'</span></div><div class="panel-body"><p> '+data[i]["replytext"]+'</p><button data-name="'+data[i]["replyer"]+'" data-rno="'+ data[i]["rno"] +'" class="btn btn-warning btn-xs replymodify"> 수정 </button><button data-rno="'+ data[i]["rno"] +'" class="btn btn-danger btn-xs replydelete"> 삭제</button></div></div>';
 				}
 				$("#replies").html(str);				
 			});
