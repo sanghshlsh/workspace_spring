@@ -10,4 +10,6 @@ public interface ReplyDAO {
 
 	List<ReplyVO> list(int bno);
 
+	void replyUpdate(ReplyVO vo);
+
 }

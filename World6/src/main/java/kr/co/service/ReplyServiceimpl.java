@@ -24,5 +24,9 @@ public class ReplyServiceimpl implements ReplyService {
 	public List<ReplyVO> list(int bno) {
 		return rDao.list(bno);
 	}
-	
+	@Override
+	public void replyUpdate(ReplyVO vo) {
+		rDao.replyUpdate(vo);
+		
+	}
 }

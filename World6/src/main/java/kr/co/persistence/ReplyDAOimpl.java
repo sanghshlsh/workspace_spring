@@ -27,5 +27,8 @@ public class ReplyDAOimpl implements ReplyDAO {
 	public List<ReplyVO> list(int bno) {
 		return session.selectList(NS+".list", bno);
 	}
-
+	@Override
+	public void replyUpdate(ReplyVO vo) {
+		session.update(NS+".replyupdate", vo);		
+	}
 }

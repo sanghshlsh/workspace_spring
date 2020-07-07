@@ -14,4 +14,8 @@
 	<select id="list" resultType="ReplyVO">
  		select * from reply where bno = #{bno} order by rno desc
  	</select>
+ 	
+ 	<update id="replyupdate">
+ 		update reply set replytext = #{replytext}, updatedate = sysdate where rno = #{rno}
+ 	</update>
 </mapper>

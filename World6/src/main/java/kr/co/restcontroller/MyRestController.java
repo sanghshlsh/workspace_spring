@@ -35,4 +35,10 @@ public class MyRestController {
 		List<ReplyVO> list = rService.list(bno);
 		return list;
 	}
+	
+	@RequestMapping(value = "/replyupdate", method = RequestMethod.PUT)
+	public void replyUpdate(@RequestBody ReplyVO vo) {
+		rService.replyUpdate(vo);
+		
+	}
 }
