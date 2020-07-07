@@ -15,7 +15,11 @@
  		select * from reply where bno = #{bno} order by rno desc
  	</select>
  	
- 	<update id="replyupdate">
+ 	<update id="update">
  		update reply set replytext = #{replytext}, updatedate = sysdate where rno = #{rno}
  	</update>
+ 	
+ 	<delete id="delete">
+ 		delete from reply where rno = #{rno}
+ 	</delete>
 </mapper>

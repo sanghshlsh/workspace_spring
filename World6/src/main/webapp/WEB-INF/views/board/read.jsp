@@ -180,18 +180,19 @@
 
 				$.ajax({
 					type: 'put',
-					url: '/replyupdate',  
+					url: '/replies/'+rno,  
 					headers: {
 						"Content-Type": "application/json",
 						"X-HTTP-Method-Override": "PUT"
 					},
 					dataType: 'text',
-					data: JSON.stringify({
-						rno: rno,  
+					data: JSON.stringify({ 
 						replytext: replytext
 					}),
 					success : function(result){
-						getList(bno);
+						if(result === "success"){
+							getList(bno);
+						}
 					},
 					error : function(request,status,error){
 						console.log(error);
@@ -202,8 +203,25 @@
 
 			$("#replies").on("click",".replydelete",function(){
 				var rno = $(this).attr("data-rno");
-				alert(rno+"번 : 삭제버튼이 눌렸습니다.");
-				$(this).parent().parent().remove();
+				
+				$.ajax({
+					type: 'delete',
+					url: '/replies',  
+					headers: {
+						"Content-Type": "application/json",
+						"X-HTTP-Method-Override": "DELETE"
+					},
+					dataType: 'text',
+					data: JSON.stringify({
+						rno: rno
+					}),
+					success : function(result){
+						getList(bno);
+					},
+					error : function(request,status,error){
+						console.log(error);
+					}
+				});
 			});				
 		});
 
