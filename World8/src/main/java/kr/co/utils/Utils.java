@@ -1,6 +1,7 @@
 package kr.co.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
 public class Utils {
 	public static String toKor(String msg) {
@@ -15,5 +16,12 @@ public class Utils {
 		}
 		return null;
 			
+	}
+	
+	public static String makeNewName(String originalName) {
+		UUID uid = UUID.randomUUID();
+		String newName = uid.toString()+"_"+originalName;
+		
+		return newName;
 	}
 }
