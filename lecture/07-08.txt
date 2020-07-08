@@ -104,3 +104,9 @@ controller에서 수행
 
 servlet-context에 bean생성
 class : maven -> spring-web ->multipart.commons->CommonsMultipartResolver classpath이용
+id : multipartResolver
+property 
+	maxUploadSize 입력
+
+===================================================================
+FileCopyUtils의 copy method를 이용 업로드한다.
