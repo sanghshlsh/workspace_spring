@@ -1,0 +1,43 @@
+decendancy추가
+
+spring-aop 4.2.1
+spring-tx 4.2.1
+aspectjrt 1.5.4
+aspectjweaver 1.5.4
+
+AOP(service에서 실행)
+-대표적 기능 transaction(service에서 구현)
+================================================================
+설치후
+root-context.xml
+하단 namespace tab의
+ aop,context,mybatis,tx 체크 확인
+<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+================================================================
+advice객체 생성할때는
+@component를 활용한다.
+================================================================
+
+
+AOP 용어정리
+aspect : 공통관심사에 대한 추상적인 명칭
+advice : 공통관심사에 대한 특정 기능을 실제로 구현된 객체
+	-around adivce
+	-before advice
+	-after advice
+target : advice가 적용될 대상 객체
+join points :  target의 메서드 중에서 advice가 적용될 수 있는 모든 메서드
+point cut : join points중 advice가 적용되어 실행되는 특정 메서드
+proxy 객체 : 가짜 객체라는 뜻으로 point cut의 코드와 advice의 코드가 합쳐진 객체를 의미함.
+클라이언트가 접촉하는 객체는 target이 아니라 proxy 객체.
+weaving : point cut의 코드와 advice의 코드가 합쳐지는 과정으로 이 과정의 결과물이 proxy객체.
+================================================================
+transaction을하려면 root-context에 
+<tx:annotation-driven/>
+<bean id="transactionManager" 
+class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource"/>
+</bean>
+->class : maven-> spring-jdbc->springframework.jdbc.datasource->
+datasourcetransactionmanager
+->connection할당을 해야하니 datasource를 불러와 property로 넣어준다.

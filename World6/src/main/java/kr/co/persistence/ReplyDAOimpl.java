@@ -17,7 +17,6 @@ public class ReplyDAOimpl implements ReplyDAO {
 	
 	@Override
 	public int insert(ReplyVO vo) {
- 
 		Integer rno = session.selectOne(NS+".getRno");
 		vo.setRno(rno);				
 		return session.insert(NS+".insert", vo);
@@ -33,7 +32,6 @@ public class ReplyDAOimpl implements ReplyDAO {
 	}
 	@Override
 	public void delete(ReplyVO vo) {
-		session.delete(NS+".delete", vo);
-		
+		session.delete(NS+".delete", vo);		
 	}
 }
