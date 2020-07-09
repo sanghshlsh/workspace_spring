@@ -121,6 +121,7 @@ pom.xml의 여러탭중 pom.xml탭 클릭후 	java버전 1.8로 수정(jdk1.8)
 메모리 문제로 dto클래스가 적용안되거나 다른 문제가 생긴다면
 project-clean을 실행 할 시 server를 stop하고 관련project만 clean해줘야한다.
 ================================================================================================================
+인코딩작업
 window preferences
 general workspace 
 	->text encoding
@@ -128,6 +129,7 @@ json 	->json file
 web 	->css
 	->html
 	->jsp
+
 corelibrary등을 사용하기위한 templates작업
 window preferences
 jsp files -> editor -> templates

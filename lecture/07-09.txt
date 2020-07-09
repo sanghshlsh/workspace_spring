@@ -1,0 +1,33 @@
+Ajax이용 파일 업로드 구현
+
+jsp script
+$(document).ready(function(){
+			$(".fileDrop").on("dragenter dragover", function(event){
+				event.preventDefault();
+			});
+
+			$(".fileDrop").on("drop", function(event){
+				event.preventDefault();
+			
+				var files = event.originalEvent.dataTransfer.files;
+다중 업로드를 위해선 다음 세줄을 for문을 돌려야 한다.
+				var file = files[0];			
+				var formData = new FormData();
+				formData.append("file",file);
+
+
+				$.ajax({
+					type : 'post',
+					url : 'uploadajax',
+					dataType : 'text',
+					data : formData,
+					processData : false,
+					contentType : false,					
+					success : function(result){
+						console.log(result);
+					}
+				});
+				
+			});
+		});
+		
