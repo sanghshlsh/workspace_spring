@@ -23,7 +23,7 @@ public class UploadAjaxController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/uploadajax",method = RequestMethod.POST)
+	@RequestMapping(value = "/uploadajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String uploadajax(MultipartHttpServletRequest request) throws Exception {
 	
 		
