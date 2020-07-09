@@ -51,7 +51,9 @@
 					processData : false,
 					contentType : false,					
 					success : function(result){
-						console.log(result);
+						var idx = result.indexOf("_");
+						var orgName = result.substring(idx+1);
+						$(".uploadedList").append(orgName+"<br>");
 					}
 				});
 				
