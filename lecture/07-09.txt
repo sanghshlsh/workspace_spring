@@ -31,3 +31,10 @@ $(document).ready(function(){
 			});
 		});
 		
+업로드 폴더
+날짜별로
+or
+id	-	날짜
+2중구조
+
+이는 보통 utils에 static method를 만들어 사용한다.

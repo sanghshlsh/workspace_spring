@@ -2,6 +2,7 @@ package kr.co.ca;
 
 import java.io.File;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ public class UploadAjaxController {
 	
 	@RequestMapping(value = "/uploadajax", method = RequestMethod.GET)
 	public void uploadajax() {
-		
+	
 		
 	}
 	
@@ -25,6 +26,7 @@ public class UploadAjaxController {
 	@RequestMapping(value = "/uploadajax",method = RequestMethod.POST)
 	public String uploadajax(MultipartHttpServletRequest request) throws Exception {
 	
+		
 		MultipartFile file =  request.getFile("file");
 		String originalName = file.getOriginalFilename();
 		
