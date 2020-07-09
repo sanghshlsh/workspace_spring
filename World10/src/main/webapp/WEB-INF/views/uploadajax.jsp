@@ -51,14 +51,41 @@
 					processData : false,
 					contentType : false,					
 					success : function(result){
-						var idx = result.indexOf("_");
-						var orgName = result.substring(idx+1);
-						$(".uploadedList").append(orgName+"<br>");
+						
+						var str = "<div><a href = '#'>";
+						str += getOriginalName(result);
+						str += "</a></div>";
+						$(".uploadedList").append(str);
+					
 					}
 				});
 				
 			});
 		});
+
+		function getOriginalName(filename){
+			
+			if(checkImage(filename)){
+				var idx = filename.indexOf("_");
+				idx = filename.indexOf("_",idx+1);
+				return filename.substring(idx+1);
+			}else{
+				var	idx = filename.indexOf("_");
+				return filename.substring(idx+1);
+				
+			}
+			
+			
+		}
+		function checkImage(filename){
+			var idx = filename.lastIndexOf(".");
+			var format = filename.substring(idx+1).toUpperCase();
+			if(format == 'PNG' || format == 'JPG' || format == 'JPEG' || format == 'GIF'){
+				return true;
+			}else{
+				return false;
+			}
+		}
 	</script>
 
 </body>

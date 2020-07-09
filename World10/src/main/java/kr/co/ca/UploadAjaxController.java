@@ -31,7 +31,7 @@ public class UploadAjaxController {
 		String originalName = file.getOriginalFilename();
 		
 		String saveFileName = Utils.saveFile(originalName, file, uploadPath);
-		
+
 		return saveFileName;
 	}
 }

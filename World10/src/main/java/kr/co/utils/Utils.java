@@ -1,12 +1,17 @@
 package kr.co.utils;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
+
+import org.imgscalr.Scalr;
 import org.springframework.http.MediaType;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,11 +44,14 @@ public class Utils {
 		boolean isImgFile = isImg(originalName);
 		if (isImgFile) {
 			System.out.println("썸네일을 만든다.");
+			return makeThumbnail(uploadPath, datePath, newName);
 		} else {
 			System.out.println("썸네일을 만들지 않는다.");
+			String beforeChangeName = datePath + File.separator + newName;
+			return beforeChangeName.replace(File.separatorChar, '/');
 		}
 		
-		return datePath + File.separator + newName;
+		
 	}
 
 	public static int[] getDateInfo() {
@@ -97,7 +105,29 @@ public class Utils {
 			return true;
 		}
 		return false;
-				
-		
 	}
+	
+	public static String makeThumbnail(String uploadPath, String datePath, String newName ) throws Exception {
+		File f1 = new File(uploadPath+datePath, newName);
+		//double buffering 기법 버퍼를 두번넣어 이미지 복사(이미지를 버퍼에 저장해서 관리)
+		BufferedImage sourceImg = ImageIO.read(f1);
+		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_EXACT,100);
+		//sourceImg -> 원본이미지를 정확히 (fit-exact 가로세로전부)100 크기에 맞게 resize(fit-exact는 관계없지만 height같은경우는 세로자이즈는 method.automatic를 통해 조정함)
+		
+		//thumbnail path설정
+		String thumbnailName = uploadPath+datePath+File.separator+"s_"+newName;
+		
+		File newFile = new File(thumbnailName);
+		
+		int idx = newName.lastIndexOf(".");
+		String format = newName.substring(idx+1).toUpperCase();
+		ImageIO.write(destImg, format, newFile);
+		//destimg를 format형식으로 newfile 위치에 입력
+		
+		
+		//filepath는 현재 C:\업로드\2020\07/09\s_xxxxxxxxxxxxxxxxxx_orgName.확장자명이라고 되어있는데 브라우져로 보낼때는 \를 /로 바꿔주어야 한다.
+		
+		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');		
+	}
+	
 }
