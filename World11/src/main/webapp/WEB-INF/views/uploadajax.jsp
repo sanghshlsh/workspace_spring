@@ -27,7 +27,6 @@
 <body>
 	<div class="fileDrop"></div>
 	<div class="uploadedList"></div>
-
 	
 	
 	<script type="text/javascript">
@@ -45,7 +44,7 @@
 				formData.append("file",file);
 				$.ajax({
 					type : 'post',
-					url : 'uploadajax',
+					url : '/uploadajax',
 					dataType : 'text',
 					data : formData,
 					processData : false,
@@ -59,15 +58,38 @@
 							str += "<img src = '/resources/show.png'/>";
 						}
 						str += getOriginalName(result);
-						str += "</a></div>";
+						str += "</a><a class='deletefile' href='"+result+"'><span class='glyphicon glyphicon-trash'></span></a></div>";
+						
 						$(".uploadedList").append(str);
-					
+						
 					}
 				});
 				
 			});
+			$("div").on("click",".deletefile", function(event){
+				event.preventDefault();
+				var filename = $(this).attr("href");
+	
+				
+				console.log(filename);
+				$.ajax({
+		
+						type : 'post',
+						url : '/deletefile',
+					
+						dataType : 'text',
+						data :{ 'filename' : filename}
+						,	
+						success : function(result){
+							
+						}
+					
+				});
+				 $(this).parent().remove();
+			});
+			
 		});
-
+			
 		function getOriginalName(filename){
 			
 			if(checkImage(filename)){
@@ -100,10 +122,8 @@
 				return filename;
 			}else{
 				return result;
-			}
-			
+			}			
 		}
-
 	</script>
 
 </body>
