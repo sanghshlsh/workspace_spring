@@ -1,0 +1,18 @@
+그림판 파일-속성
+이미지파일의 대용 썸네일 생성
+show.png
+
+-> webapp->resources 폴더에 넣기
+
+썸네일 이미지태그 추가
+
+project에 없는 이미지파일의 파일명을 직접 img 태그의 src에넣으면 사진이 뜨지 않아 
+img태그에 byte[]형태의 데이터 자체를 넣어준다.
+
+str += "<img src = '/displayfile?filename="+result+" />"
+		 controllermapping->display
+
+일반적으로 현업에서는 controller의 반환형을
+ResponseEntity를 사용한다
+이미지의 데이터를 넘길 때도 byte[]타입의 데이터도 넘겨줘야하지만 헤더정보까지 넘겨줘야 하기에  
+이 반환형을 사용 generic type만 byte[]로 바꿔준다.
