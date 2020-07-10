@@ -69,21 +69,13 @@
 			$("div").on("click",".deletefile", function(event){
 				event.preventDefault();
 				var filename = $(this).attr("href");
-	
-				
-				console.log(filename);
-				$.ajax({
-		
+				$.ajax({	
 						type : 'post',
-						url : '/deletefile',
-					
+						url : '/deletefile',			
 						dataType : 'text',
-						data :{ 'filename' : filename}
-						,	
-						success : function(result){
-							
-						}
-					
+						data :{ 
+							'filename' : filename
+						}							
 				});
 				 $(this).parent().remove();
 			});

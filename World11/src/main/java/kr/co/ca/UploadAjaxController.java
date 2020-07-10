@@ -86,8 +86,7 @@ public class UploadAjaxController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/deletefile", method = RequestMethod.POST)
-	public String deletefile(String filename){
-		System.out.println(uploadPath+filename);
+	public void deletefile(String filename){
 		File f1 = new File(uploadPath+filename);
 		if(Utils.isImg(filename)) {
 			int idx = filename.indexOf("s_");
@@ -97,6 +96,5 @@ public class UploadAjaxController {
 			f2.delete();
 		}
 		f1.delete();
-		return "Dd";
 	}
 }
