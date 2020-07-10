@@ -64,8 +64,8 @@ public class UploadAjaxController {
 				String originalName = filename.substring(idx+1);
 				headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 				//다온로드를 하게해주는 마임타입 -> MediaType.APPLICATION_OCTET_STREAM
-				headers.add("Content-Disposition", "attachment;filename=\"\""+new String(originalName.getBytes("UTF-8"), "ISO-8859-1"));
-			
+				headers.add("Content-Disposition", "attachment;filename=\""+new String(originalName.getBytes("UTF-8"), "ISO-8859-1")+"\"");
+				//attachment;뒤 빈공간이있으면 안도니다.
 			}
 			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),headers,HttpStatus.OK);
 			//img태그의 src에 데이터를 넣어주는 코드
@@ -84,40 +84,4 @@ public class UploadAjaxController {
 		return entity;
 	}
 	
-//	@ResponseBody
-//	@RequestMapping(value = "/displayorgfile", method = RequestMethod.GET)
-//	public ResponseEntity<byte[]> displayorgfile(String filename){
-//		ResponseEntity<byte[]> entity = null;
-//		
-//		InputStream	in = null;
-//		int idx = filename.indexOf("s_");
-//		String orgfile;
-//		orgfile = filename.substring(0,idx);
-//		orgfile += filename.substring(idx+2);
-//		filename = orgfile;
-//		try {
-//			idx = filename.lastIndexOf(".");
-//			String format = filename.substring(idx+1);
-//			MediaType mType = Utils.getMediaType(format);
-//			HttpHeaders headers = new HttpHeaders();
-//			in = new FileInputStream(uploadPath+filename);
-//			if(mType != null) {
-//			headers.setContentType(mType);	
-//			}
-//			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),headers,HttpStatus.OK);
-//			//img태그의 src에 데이터를 넣어주는 코드
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-//			//실패시 통신상태 badrequest날려주기
-//		} finally {
-//				try {
-//					if(in != null)	in.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//		}
-//		
-//		return entity;
-//	}
 }
