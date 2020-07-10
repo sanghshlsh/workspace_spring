@@ -68,6 +68,7 @@ public class UploadAjaxController {
 			
 			}
 			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),headers,HttpStatus.OK);
+			//img태그의 src에 데이터를 넣어주는 코드
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
@@ -82,4 +83,41 @@ public class UploadAjaxController {
 		
 		return entity;
 	}
+	
+//	@ResponseBody
+//	@RequestMapping(value = "/displayorgfile", method = RequestMethod.GET)
+//	public ResponseEntity<byte[]> displayorgfile(String filename){
+//		ResponseEntity<byte[]> entity = null;
+//		
+//		InputStream	in = null;
+//		int idx = filename.indexOf("s_");
+//		String orgfile;
+//		orgfile = filename.substring(0,idx);
+//		orgfile += filename.substring(idx+2);
+//		filename = orgfile;
+//		try {
+//			idx = filename.lastIndexOf(".");
+//			String format = filename.substring(idx+1);
+//			MediaType mType = Utils.getMediaType(format);
+//			HttpHeaders headers = new HttpHeaders();
+//			in = new FileInputStream(uploadPath+filename);
+//			if(mType != null) {
+//			headers.setContentType(mType);	
+//			}
+//			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),headers,HttpStatus.OK);
+//			//img태그의 src에 데이터를 넣어주는 코드
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+//			//실패시 통신상태 badrequest날려주기
+//		} finally {
+//				try {
+//					if(in != null)	in.close();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//		}
+//		
+//		return entity;
+//	}
 }

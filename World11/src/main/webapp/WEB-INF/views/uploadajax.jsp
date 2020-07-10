@@ -51,13 +51,12 @@
 					processData : false,
 					contentType : false,					
 					success : function(result){
-						
-						var str = "<div><a href = '#'>";
+						var str = "<div><a href ='/displayfile?filename="+getImageLink(result)+"'>";
 						if(checkImage(result)){
-							str += "<img src = '/displayfile?filename="+result+"' />"
+							str += "<img src = '/displayfile?filename="+result+"' />";
 
 						} else{
-							str += "<img src = '/resources/show.png'/>"
+							str += "<img src = '/resources/show.png'/>";
 						}
 						str += getOriginalName(result);
 						str += "</a></div>";
@@ -92,6 +91,19 @@
 				return false;
 			}
 		}
+
+		function getImageLink(result){
+			if(checkImage(result)){
+				var idx = result.indexOf("s_");
+				var filename = result.substring(0,idx);
+				filename += result.substring(idx+2);
+				return filename;
+			}else{
+				return result;
+			}
+			
+		}
+
 	</script>
 
 </body>
