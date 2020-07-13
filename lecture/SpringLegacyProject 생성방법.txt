@@ -73,7 +73,7 @@ maven dependencies-> spring-web-4.2.1-> web.filter -> charencoding 이용
 	<filter-name>encoding</filter-name>
 	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 	<init-param>
-		<pama-name>encoding</pama-name>
+		<param-name>encoding</pama-name>
 		<param-value>UTF-8</param-value>
 	</init-param>
 	
